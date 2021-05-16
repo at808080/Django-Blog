@@ -1,0 +1,18 @@
+{% extends "blog/basetemplate.html" %}
+{% block content %}
+
+<h1>This is the blog post details page for {{ object.title }} by {{ object.author.username }}</h1>
+    <hr>
+    {% if object.author == user %}
+        <a href="{% url 'blogpost-update' object.id %}">Update</a>
+        <a href="{% url 'blogpost-delete' object.id %}">Delete</a>
+    {% endif %}
+    <h2> {{ object.title }} </h2>
+    <img src="{{ object.author.profile.image.url }}">
+    {% ifequal object.date_added '4/5/2021' %}
+        <h3> Authored by {{ object.author }} today </h3>
+    {% else %}
+        <h3> Authored by {{ object.author }} on {{ object.date_added|date:"F d, Y" }}.</h3>
+    {% endifequal %}
+    <p> {{ object.content }} </p>
+{% endblock content %}
