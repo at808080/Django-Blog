@@ -1,6 +1,6 @@
 from django.shortcuts import render
 import sys
-from sys.path.append('/utils/') import stock
+#from sys.path.append('/utils/') import stock
 
 # Create your views here.
 
